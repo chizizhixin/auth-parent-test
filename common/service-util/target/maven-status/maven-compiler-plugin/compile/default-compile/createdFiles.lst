@@ -1,0 +1,4 @@
+com\auth\system\exception\AuthException.class
+com\auth\system\config\Knife4jConfig.class
+com\auth\system\config\MybatisPlusConfig.class
+com\auth\system\exception\GlobalExceptionHandler.class

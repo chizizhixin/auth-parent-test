@@ -1,0 +1,6 @@
+com\auth\system\filter\TokenAuthenticationFilter.class
+com\auth\system\service\LoginLogService.class
+com\auth\system\config\WebSecurityConfig.class
+com\auth\system\custom\CustomMd5Password.class
+com\auth\system\custom\CustomUser.class
+com\auth\system\filter\TokenLoginFilter.class
