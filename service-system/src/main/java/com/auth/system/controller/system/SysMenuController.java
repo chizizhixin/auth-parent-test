@@ -1,4 +1,4 @@
-package com.auth.system.controller;
+package com.auth.system.controller.system;
 
 
 import com.auth.model.system.SysMenu;

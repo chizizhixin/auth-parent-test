@@ -15,7 +15,7 @@ spring:
     time-zone: GMT+8
 
   redis:
-    host: 192.168.168.128
+    host: 192.168.168.129
     port: 6379
     database: 0
     timeout: 1800000

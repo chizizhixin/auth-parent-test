@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auth.system.mapper.CategoryMapper">
+
+     <resultMap id="CategoryMap" type="com.auth.model.shop.Category"  autoMapping="true"></resultMap>
+     <sql id="columns">
+          id,type,name,sort,create_time,update_time,create_user,update_user,is_deleted,status
+     </sql>
+     <select id="selectPage" resultMap="CategoryMap">
+          select <include refid="columns" />
+          from category
+          <where>
+               <if test="vo.keyword != null and vo.keyword != ''">
+                    and  name like CONCAT('%',#{vo.keyword},'%')
+               </if>
+               <if test="vo.createTimeBegin != null and vo.createTimeBegin != ''">
+                    and create_time >= #{vo.createTimeBegin}
+               </if>
+               <if test="vo.createTimeEnd != null and vo.createTimeEnd != ''">
+                    and create_time &lt;= #{vo.createTimeEnd}
+               </if>
+               and is_deleted = 0
+          </where>
+          order by id desc
+     </select>
+</mapper>

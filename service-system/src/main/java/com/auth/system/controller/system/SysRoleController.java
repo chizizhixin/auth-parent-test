@@ -1,4 +1,4 @@
-package com.auth.system.controller;
+package com.auth.system.controller.system;
 
 import com.auth.model.system.SysRole;
 import com.auth.model.vo.AssginRoleVo;
@@ -74,7 +74,6 @@ public class SysRoleController {
 		}else {
 			return Result.fail();
 		}
-
 	}
 
 	@ApiOperation("根据id查询")
