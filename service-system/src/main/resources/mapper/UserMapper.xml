@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auth.system.mapper.UserMapper">
+    <resultMap id="CategoryMap" type="com.auth.model.shop.User"  autoMapping="true"></resultMap>
+    <sql id="columns">
+        id,name,phone,sex,id_number,avatar,status,is_deleted
+    </sql>
+    <select id="selectPage" resultMap="CategoryMap">
+        select <include refid="columns" />
+        from user
+        <where>
+            <if test="vo.keyword != null and vo.keyword != ''">
+                and  ( name like CONCAT('%',#{vo.keyword},'%') or phone like CONCAT('%',#{vo.keyword},'%') or sex like CONCAT('%',#{vo.keyword},'%'))
+            </if>
+            and is_deleted = 0
+        </where>
+        order by id desc
+    </select>
+</mapper>
