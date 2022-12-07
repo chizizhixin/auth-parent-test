@@ -103,7 +103,7 @@ public class DishController {
 	//更改商品状态
 	@ApiOperation("更改商品状态")
 	@GetMapping("updateStatus/{id}/{status}")
-	public Result uodateStatus(@PathVariable String id,
+	public Result updateStatus(@PathVariable String id,
 							   @PathVariable Integer status){
 		dishService.updateStatus(id,status);
 		return Result.ok();

@@ -1,6 +1,9 @@
 package com.auth.system.service;
 
 import com.auth.model.shop.Orders;
+import com.auth.model.vo.OrdersVo;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +16,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface OrdersService extends IService<Orders> {
 
+	IPage<Orders> selectPage(Page<Orders> ordersPage, OrdersVo ordersVo);
+
+	void updateStatus(String id, Integer status);
 }

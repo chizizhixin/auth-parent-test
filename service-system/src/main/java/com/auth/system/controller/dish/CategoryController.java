@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,12 +35,8 @@ public class CategoryController {
 	@ApiOperation("添加分类")
 	@PostMapping("save")
 	public Result save(@RequestBody Category category){
-		boolean save = categoryService.save(category);
-		if (save){
-			return Result.ok();
-		}else{
-			return Result.fail();
-		}
+		 categoryService.save(category);
+		return Result.ok();
 	}
 	//根据id查询分类
 	@ApiOperation("根据id查询")

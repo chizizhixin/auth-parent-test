@@ -16,8 +16,6 @@ import java.util.Iterator;
 
 @Service
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
-
-
 	@Override
 	public void updateStatus(String id, Integer status) {
 		Category category = baseMapper.selectById(id);

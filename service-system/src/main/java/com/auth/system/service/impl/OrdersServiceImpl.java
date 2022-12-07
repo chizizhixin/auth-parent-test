@@ -1,8 +1,11 @@
 package com.auth.system.service.impl;
 
 import com.auth.model.shop.Orders;
+import com.auth.model.vo.OrdersVo;
 import com.auth.system.mapper.OrdersMapper;
 import com.auth.system.service.OrdersService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +20,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> implements OrdersService {
 
+	@Override
+	public void updateStatus(String id, Integer status) {
+		Orders orders = baseMapper.selectById(id);
+		orders.setStatus(status);
+		baseMapper.updateById(orders);
+	}
+
+	@Override
+	public IPage<Orders> selectPage(Page<Orders> ordersPage, OrdersVo ordersVo) {
+		return null;
+	}
 }

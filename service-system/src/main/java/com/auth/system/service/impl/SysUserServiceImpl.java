@@ -46,6 +46,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 		List<String> permsList =  sysMenuService.getUserButtonList(sysUser.getId());
 
 		Map<String, Object> map = new HashMap<>();
+		map.put("id",sysUser.getId());
 		map.put("name",username);
 		map.put("roles","[\"admin\"]");
 		map.put("avatar","https://oss.aliyuncs.com/aliyun_id_photo_bucket/default_handsome.jpg");
