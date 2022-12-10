@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * @author chizizhixin
  * @since 2022-11-27
  */
-@Api(tags = "用户管理")
+@Api(tags = "系统用户管理")
 @RestController
 @RequestMapping("/admin/system/sysUser")
 public class SysUserController {

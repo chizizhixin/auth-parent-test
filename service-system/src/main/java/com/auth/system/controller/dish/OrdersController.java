@@ -7,6 +7,7 @@ import com.auth.system.result.Result;
 import com.auth.system.service.OrdersService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.util.List;
  * @author chizizhixin
  * @since 2022-12-06
  */
+@Api(tags = "订单管理")
 @RestController
 @RequestMapping("/admin/dish/orders")
 public class OrdersController {
@@ -89,7 +91,7 @@ public class OrdersController {
 	//更改商品状态
 	@ApiOperation("更改订单状态")
 	@GetMapping("updateStatus/{id}/{status}")
-	public Result uodateStatus(@PathVariable String id,
+	public Result updateStatus(@PathVariable String id,
 							   @PathVariable Integer status){
 		ordersService.updateStatus(id,status);
 		return Result.ok();

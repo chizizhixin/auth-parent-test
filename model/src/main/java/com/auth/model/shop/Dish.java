@@ -1,8 +1,10 @@
 package com.auth.model.shop;
 
+import com.auth.model.base.BaseEntity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,12 +17,7 @@ import java.time.LocalDateTime;
  * @author Sire
  */
 @Data
-public class Dish implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private Long id;
-
+public class Dish extends BaseEntity {
 
     //菜品名称
     private String name;
@@ -45,8 +42,8 @@ public class Dish implements Serializable {
     //描述信息
     private String description;
 
-
-    //0 停售 1 起售
+    @ApiModelProperty(value = "状态(0:禁止,1:正常)")
+    @TableField("status")
     private Integer status;
 
 
@@ -57,20 +54,13 @@ public class Dish implements Serializable {
     @TableLogic
     private Integer isDeleted;
 
-
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
-
-    @TableField(fill = FieldFill.INSERT)
+    //创建人
+    @TableField("create_user")
     private Long createUser;
 
 
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    //修改人
+    @TableField("update_user")
     private Long updateUser;
 
 }

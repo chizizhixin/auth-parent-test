@@ -40,7 +40,7 @@ public class DishController {
 	}
 	//根据id删除商品信息
 	@ApiOperation("根据id删除商品信息")
-	@GetMapping("remove/{id}")
+	@DeleteMapping("remove/{id}")
 	public Result removeById(@PathVariable String id){
 		boolean removeById = dishService.removeById(id);
 		if (removeById){
@@ -64,6 +64,8 @@ public class DishController {
 	@ApiOperation("添加商品")
 	@PostMapping("save")
 	public Result save(@RequestBody Dish dish){
+
+		System.out.println(dish.getImage());
 		boolean save = dishService.save(dish);
 		if (save){
 			return Result.ok();
@@ -105,6 +107,7 @@ public class DishController {
 	@GetMapping("updateStatus/{id}/{status}")
 	public Result updateStatus(@PathVariable String id,
 							   @PathVariable Integer status){
+		System.out.println(status);
 		dishService.updateStatus(id,status);
 		return Result.ok();
 	}

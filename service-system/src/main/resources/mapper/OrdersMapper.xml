@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.auth.system.mapper.OrdersMapper">
-
+    <resultMap id="SysUserMap" type="com.auth.model.shop.Orders"  autoMapping="true"></resultMap>
+    <sql id="columns">
+        id,number,user_id,address_book_id,order_time,checkout_time,pay_method,amount,remark,phone,address,user_name,consignee,is_deleted
+    </sql>
+    <select id="selectPage" resultMap="SysUserMap">
+        select <include refid="columns" />
+        from orders
+        <where>
+            <if test="vo.keyword != null and vo.keyword != ''">
+                and (number like CONCAT('%',#{vo.keyword},'%') or user_name like CONCAT('%',#{vo.keyword},'%') )
+            </if>
+            <if test="vo.createTimeBegin != null and vo.createTimeBegin != ''">
+                and order_time >= #{vo.createTimeBegin}
+            </if>
+            <if test="vo.createTimeEnd != null and vo.createTimeEnd != ''">
+                and order_time &lt;= #{vo.createTimeEnd}
+            </if>
+            and is_deleted = 0
+        </where>
+        order by id desc
+    </select>
 </mapper>

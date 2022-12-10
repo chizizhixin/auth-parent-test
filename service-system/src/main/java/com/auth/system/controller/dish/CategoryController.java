@@ -12,6 +12,8 @@ import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api(tags = "分类管理接口")
 @RestController
 @RequestMapping("/admin/dish/category")
@@ -76,6 +78,16 @@ public class CategoryController {
 		categoryService.updateStatus(id,status);
 		return Result.ok();
 	}
-
+	//批量删除
+	@ApiOperation("批量删除")
+	@DeleteMapping("batchRemove")
+	public Result batchRemove(@RequestBody List<String> ids){
+		boolean b = categoryService.removeByIds(ids);
+		if (b){
+			return Result.ok();
+		}else {
+			return Result.fail();
+		}
+	}
 
 }

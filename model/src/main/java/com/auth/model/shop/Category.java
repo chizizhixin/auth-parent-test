@@ -46,12 +46,12 @@ public class Category extends BaseEntity {
 
 
     //创建人
-    @TableField(fill = FieldFill.INSERT)
+    @TableField("create_user")
     private Long createUser;
 
 
     //修改人
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @TableField("update_user")
     private Long updateUser;
 //
 //    @TableLogic  //逻辑删除 默认效果 0 没有删除 1 已经删除

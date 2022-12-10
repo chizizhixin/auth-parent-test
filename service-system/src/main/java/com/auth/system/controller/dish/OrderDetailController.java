@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  * @author chizizhixin
  * @since 2022-12-06
  */
+@Api(tags = "订单详情管理")
 @RestController
 @RequestMapping("/admin/dish/order-detail")
 public class OrderDetailController {

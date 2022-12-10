@@ -46,7 +46,7 @@ public class UserController {
 	}
 	//更新用户的状态
 	@ApiOperation("更新用户状态")
-	@PutMapping("updateByStatus")
+	@GetMapping("updateStatus/{id}/{status}")
 	public Result updateByStatus(@PathVariable String id,
 								 @PathVariable Integer status){
 		userService.updateByStatus(id,status);
@@ -62,7 +62,17 @@ public class UserController {
 		IPage<User> pageModel = userService.selectPage(userPage,userVo);
 		return Result.ok(pageModel);
 	}
-
+	//批量删除
+	@ApiOperation("批量删除")
+	@DeleteMapping("batchRemove")
+	public Result batchRemove(@RequestBody List<String> ids){
+		boolean b = userService.removeByIds(ids);
+		if (b){
+			return Result.ok();
+		}else {
+			return Result.fail();
+		}
+	}
 
 
 }

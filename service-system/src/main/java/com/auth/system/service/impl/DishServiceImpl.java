@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
  * @since 2022-12-06
  */
 @Service
+@Transactional
 public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements DishService {
 	@Override
 	public IPage<Dish> selectPage(Page<Dish> dishes, DishVo dishVo) {
