@@ -12,8 +12,9 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
-@Api(value = "SysLoginLog管理", tags = "SysLoginLog管理")
+@Api( tags = "SysLoginLog管理")
 @RestController
 @RequestMapping(value="/admin/system/sysLoginLog")
 public class SysLoginLogController {
@@ -26,10 +27,8 @@ public class SysLoginLogController {
 	public Result index(
 			@ApiParam(name = "page", value = "当前页码", required = true)
 			@PathVariable Long page,
-
 			@ApiParam(name = "limit", value = "每页记录数", required = true)
 			@PathVariable Long limit,
-
 			@ApiParam(name = "sysLoginLogVo", value = "查询对象", required = false)
 					SysLoginLogQueryVo sysLoginLogQueryVo) {
 		IPage<SysLoginLog> pageModel = sysLoginLogService.selectPage(page,limit, sysLoginLogQueryVo);
@@ -45,4 +44,14 @@ public class SysLoginLogController {
 		}else {
 			return Result.fail();
 	}}
+	@ApiOperation(value = "批量删除")
+	@DeleteMapping("batchRemove")
+	public Result batchRemove(@RequestBody List<String> ids){
+		boolean b = sysLoginLogService.removeByIds(ids);
+		if (b){
+			return Result.ok();
+		}else {
+			return Result.fail();
+		}
+	}
 }

@@ -43,6 +43,7 @@ public class DishController {
 	@DeleteMapping("remove/{id}")
 	public Result removeById(@PathVariable String id){
 		boolean removeById = dishService.removeById(id);
+
 		if (removeById){
 			return Result.ok();
 		}else {

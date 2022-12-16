@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api(value = "SysOperLog管理", tags = "SysOperLog管理")
 @RestController
 @RequestMapping(value="/admin/system/sysOperLog")
@@ -45,5 +47,16 @@ public class SysOperLogController {
 		}else {
 			return Result.fail();
 		}}
+
+	@ApiOperation(value = "批量删除")
+	@DeleteMapping("batchRemove")
+	public Result batchRemove(@RequestBody List<String> ids){
+		boolean b = operLogService.removeByIds(ids);
+		if (b){
+			return Result.ok();
+		}else {
+			return Result.fail();
+		}
+	}
 
 }

@@ -10,7 +10,7 @@
         from dish
         <where>
             <if test="vo.keyword != null and vo.keyword != ''">
-                and (username like CONCAT('%',#{vo.keyword},'%'))
+                and (name like CONCAT('%',#{vo.keyword},'%'))
             </if>
             <if test="vo.createTimeBegin != null and vo.createTimeBegin != ''">
                 and create_time >= #{vo.createTimeBegin}

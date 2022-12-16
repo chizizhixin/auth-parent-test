@@ -3,7 +3,7 @@
 <mapper namespace="com.auth.system.mapper.OrdersMapper">
     <resultMap id="SysUserMap" type="com.auth.model.shop.Orders"  autoMapping="true"></resultMap>
     <sql id="columns">
-        id,number,user_id,address_book_id,order_time,checkout_time,pay_method,amount,remark,phone,address,user_name,consignee,is_deleted
+        id,number,user_id,address_book_id,status,order_time,checkout_time,pay_method,amount,remark,phone,address,user_name,consignee,is_deleted
     </sql>
     <select id="selectPage" resultMap="SysUserMap">
         select <include refid="columns" />

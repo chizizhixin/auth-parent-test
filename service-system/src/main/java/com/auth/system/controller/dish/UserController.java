@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -54,7 +55,7 @@ public class UserController {
 	}
 	//分页查询所有用户
 	@ApiOperation("条件分页查询")
-	@GetMapping("{page}/{limit}")
+	@GetMapping("/{page}/{limit}")
 	public Result findPage(@PathVariable Long page,
 						   @PathVariable Long limit,
 						   UserVo userVo){
@@ -67,6 +68,17 @@ public class UserController {
 	@DeleteMapping("batchRemove")
 	public Result batchRemove(@RequestBody List<String> ids){
 		boolean b = userService.removeByIds(ids);
+		if (b){
+			return Result.ok();
+		}else {
+			return Result.fail();
+		}
+	}
+
+	@ApiOperation("根据id删除")
+	@DeleteMapping("remove/{id}")
+	public Result removeById(@PathVariable String id){
+		boolean b = userService.removeById(id);
 		if (b){
 			return Result.ok();
 		}else {

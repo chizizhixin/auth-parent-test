@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户表 前端控制器
@@ -103,6 +105,16 @@ public class SysUserController {
 							   @PathVariable Integer status){
 		sysUserService.updateStatus(id,status);
 		return Result.ok();
+	}
+	@ApiOperation(value = "批量删除")
+	@DeleteMapping("batchRemove")
+	public Result batchRemove(@RequestBody List<String> ids){
+		boolean b = sysUserService.removeByIds(ids);
+		if (b){
+			return Result.ok();
+		}else {
+			return Result.fail();
+		}
 	}
 
 
