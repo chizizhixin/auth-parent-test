@@ -34,7 +34,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class LogAspect {
 	private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
 
-	//微服务切换为feign调用接口
 	@Resource
 	private OperLogService OperLogService;
 

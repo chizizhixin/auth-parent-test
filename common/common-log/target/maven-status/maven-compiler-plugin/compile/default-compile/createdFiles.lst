@@ -1,5 +1,0 @@
-com\auth\system\aspect\LogAspect.class
-com\auth\system\annotation\Log.class
-com\auth\system\enums\OperatorType.class
-com\auth\system\enums\BusinessType.class
-com\auth\system\service\OperLogService.class

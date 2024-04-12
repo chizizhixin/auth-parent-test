@@ -31,6 +31,7 @@ public class IndexController {
 		//根据用户名称查询数据库
 		SysUser sysUser =  sysUserService.getUserInfoByUserName(loginVo.getUsername());
 		//如果查询为空
+//		System.out.println(loginVo.getPassword());
 		if (sysUser == null){
 			throw new AuthException(2001,"用户不存在");
 		}

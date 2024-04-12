@@ -19,4 +19,6 @@ public interface OrdersService extends IService<Orders> {
 	IPage<Orders> selectPage(Page<Orders> ordersPage, OrdersVo ordersVo);
 
 	void updateStatus(String id, Integer status);
+
+	void removeOrdersById(String id);
 }

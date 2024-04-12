@@ -6,7 +6,7 @@
     <resultMap id="sysMenuMap" type="com.auth.model.system.SysMenu" autoMapping="true">
     </resultMap>
 
-    <!-- 用于select查询公用抽取的列 -->
+
     <sql id="columns">
         m.id,m.parent_id,m.name,m.type,m.path,m.component,m.perms,m.icon,m.sort_value,m.status,m.create_time,m.update_time,m.is_deleted
     </sql>

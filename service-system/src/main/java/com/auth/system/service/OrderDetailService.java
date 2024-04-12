@@ -2,6 +2,7 @@ package com.auth.system.service;
 
 import com.auth.model.shop.OrderDetail;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface OrderDetailService extends IService<OrderDetail> {
 
+	OrderDetail getByDetailId(String id);
 }

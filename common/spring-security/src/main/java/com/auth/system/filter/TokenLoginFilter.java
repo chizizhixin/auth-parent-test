@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -42,7 +43,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
 		this.setAuthenticationManager(authenticationManager);
 		this.setPostOnly(false);
 		//指定登录接口及提交方式，可以指定任意路径
-		this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/admin/system/index/login","POST"));
+		this.setRequiresAuthenticationRequestMatcher(new OrRequestMatcher(new AntPathRequestMatcher("/admin/system/index/login","POST"),new AntPathRequestMatcher("/applet/user/login","POST")));
 		this.redisTemplate = redisTemplate;
 		this.loginLogService = loginLogService;
 	}

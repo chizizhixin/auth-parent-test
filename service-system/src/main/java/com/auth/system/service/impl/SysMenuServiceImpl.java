@@ -91,7 +91,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 			QueryWrapper<SysMenu> wrapper = new QueryWrapper<>();
 			wrapper.eq("status",1);
 			wrapper.orderByAsc("sort_value");
-			 sysMenuList = baseMapper.selectList(wrapper);
+			sysMenuList = baseMapper.selectList(wrapper);
 		}
 		//userid不是1，其他类型的用户查询这个数据
 		else{

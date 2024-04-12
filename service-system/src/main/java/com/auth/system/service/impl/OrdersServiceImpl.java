@@ -2,11 +2,14 @@ package com.auth.system.service.impl;
 
 import com.auth.model.shop.Orders;
 import com.auth.model.vo.OrdersVo;
+import com.auth.system.mapper.OrderDetailMapper;
 import com.auth.system.mapper.OrdersMapper;
 import com.auth.system.service.OrdersService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,6 +22,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> implements OrdersService {
+	@Autowired
+	private OrderDetailMapper orderDetailMapper;
+	@Override
+	public void removeOrdersById(String id) {
+		orderDetailMapper.deleteByOrdersId(id);
+		baseMapper.deleteById(id);
+	}
 
 	@Override
 	public void updateStatus(String id, Integer status) {
